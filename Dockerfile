@@ -13,6 +13,7 @@ RUN <<PANDOC
     wget https://github.com/jgm/pandoc/releases/download/3.1.2/pandoc-3.1.2-linux-amd64.tar.gz
     tar xzvf pandoc-3.1.2-linux-amd64.tar.gz
     cp pandoc-3.1.2/bin/pandoc /bin/pandoc
+    rm -r pandoc*
 PANDOC
 
 COPY entrypoint.sh /entrypoint.sh
