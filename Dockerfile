@@ -15,6 +15,8 @@ RUN <<PANDOC
     cp pandoc-3.1.2/bin/pandoc /bin/pandoc
 PANDOC
 
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 WORKDIR /siteroot/
-CMD Rscript -e "sandpaper::serve()"
 
