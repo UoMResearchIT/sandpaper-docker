@@ -16,8 +16,12 @@ RUN <<PANDOC
     rm -r pandoc*
 PANDOC
 
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+RUN <<GIT
+    apk add git
+    git config --global --add safe.directory /siteroot/
+GIT
 
 WORKDIR /siteroot/
+
+CMD Rscript -e "sandpaper::serve(host = '0.0.0.0', port = '4321')"
 
