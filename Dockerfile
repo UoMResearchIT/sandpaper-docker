@@ -5,8 +5,6 @@ RUN <<SANDPAPER
     installr -c
     installr -a "curl-dev linux-headers libxml2-dev fontconfig-dev harfbuzz-dev fribidi-dev freetype-dev tiff-dev jpeg-dev libgit2-dev libxslt-dev"
     installr url::https://carpentries.r-universe.dev/src/contrib/sandpaper_0.12.4.tar.gz
-    installr url::https://carpentries.r-universe.dev/src/contrib/tinkr_0.2.0.tar.gz
-    installr url::https://carpentries.r-universe.dev/src/contrib/pegboard_0.5.2.tar.gz
     installr url::https://carpentries.r-universe.dev/src/contrib/varnish_0.2.17.tar.gz
 SANDPAPER
 
