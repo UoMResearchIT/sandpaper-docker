@@ -1,8 +1,8 @@
 FROM ghcr.io/r-hub/r-minimal/r-minimal:4.4
 
 # Check https://carpentries.r-universe.dev/builds for latest versions of sandpaper, tinkr, pegboard and varnish
-ARG sandpaper_version=0.12.4
-ARG varnish_version=0.2.18
+ARG sandpaper_version=0.14.0
+ARG varnish_version=0.3.1
 COPY sandpaper_${sandpaper_version}.tar.gz /
 COPY varnish_${varnish_version}.tar.gz /
 RUN <<SANDPAPER
