@@ -18,6 +18,9 @@ on:
 jobs:
   build-test-push:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platforms: [linux/amd64, linux/arm64, windows/amd64, darwin/amd64]
     permissions: write-all
     steps:
 
@@ -31,6 +34,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          platforms: ${{ matrix.platforms }}
           load: true
           tags: sandpaper:testing
 
