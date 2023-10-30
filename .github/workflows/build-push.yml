@@ -1,5 +1,9 @@
 name: build-push
-run-name: 'build-push: versioned? ${{ github.event.inputs.versioned }} - latest? ${{ github.event.inputs.latest }}'
+run-name: |
+  build-push:
+  ${{ github.event.inputs.versioned == 'true' && 'versioned , ' || ', ' }}
+  ${{ github.event.inputs.latest == 'true' && 'latest , ' || ', ' }}
+  ${{ github.event.inputs.custom_tag != '' && github.event.inputs.custom_tag || '' }}
 
 on:
   workflow_dispatch:
@@ -14,6 +18,11 @@ on:
         required: true
         type: boolean
         default: true
+      custom_tag:
+        description: 'Specify a custom tag to push'
+        required: false
+        type: string
+        default: ""
 
 jobs:
   build-test-push:
@@ -80,3 +89,9 @@ jobs:
         run: |
           docker image tag sandpaper:testing ghcr.io/uomresearchit/sandpaper:latest
           docker push ghcr.io/uomresearchit/sandpaper:latest
+
+      - name: Push custom_tag
+        if: github.event.inputs.custom_tag != ''
+        run: |
+          docker image tag sandpaper:testing ghcr.io/uomresearchit/sandpaper:${{ github.event.inputs.custom_tag }}
+          docker push ghcr.io/uomresearchit/sandpaper:${{ github.event.inputs.custom_tag }}
