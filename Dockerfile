@@ -14,8 +14,10 @@ SANDPAPER
 
 ARG pandoc_version=2.19.2
 COPY pandoc-${pandoc_version}-linux-amd64.tar.gz /
+COPY pandoc-${pandoc_version}-linux-arm64.tar.gz /
 RUN <<PANDOC
-    tar xzvf /pandoc-${pandoc_version}-linux-amd64.tar.gz
+    os_arch=$(if [ "$(arch)" = "aarch64" ]; then echo "arm"; else echo "amd"; fi)
+    tar xzvf /pandoc-${pandoc_version}-linux-${os_arch}64.tar.gz
     cp pandoc-${pandoc_version}/bin/pandoc /bin/pandoc
     rm -r pandoc*
 PANDOC
