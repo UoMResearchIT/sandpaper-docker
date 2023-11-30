@@ -1,7 +1,7 @@
 FROM ghcr.io/r-hub/r-minimal/r-minimal:4.4
 
 # Check https://carpentries.r-universe.dev/builds for latest versions of sandpaper, tinkr, pegboard and varnish
-ARG sandpaper_version=0.14.0
+ARG sandpaper_version=0.15.0
 ARG varnish_version=0.3.1
 COPY sandpaper_${sandpaper_version}.tar.gz /
 COPY varnish_${varnish_version}.tar.gz /
@@ -31,5 +31,5 @@ GIT
 
 WORKDIR /siteroot/
 
-CMD Rscript -e "sandpaper::serve(host = '0.0.0.0', port = '4321')"
+CMD SANDPAPER_SITE=$(mktemp -d) Rscript -e "sandpaper::serve(host = '0.0.0.0', port = '4321')"
 
