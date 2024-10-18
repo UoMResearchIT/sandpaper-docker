@@ -1,8 +1,8 @@
 FROM ghcr.io/r-hub/r-minimal/r-minimal:4.4
 
 # Check https://carpentries.r-universe.dev/builds for latest versions of sandpaper, tinkr, pegboard and varnish
-ARG sandpaper_version=0.15.0
-ARG varnish_version=0.3.1
+ARG sandpaper_version=0.16.9
+ARG varnish_version=1.0.4
 COPY sandpaper_${sandpaper_version}.tar.gz /
 COPY varnish_${varnish_version}.tar.gz /
 RUN <<SANDPAPER
@@ -12,7 +12,8 @@ RUN <<SANDPAPER
     installr /varnish_${varnish_version}.tar.gz
 SANDPAPER
 
-ARG pandoc_version=2.19.2
+# Check https://github.com/jgm/pandoc/releases/latest for latest version of pandoc
+ARG pandoc_version=3.5
 COPY pandoc-${pandoc_version}-linux-amd64.tar.gz /
 COPY pandoc-${pandoc_version}-linux-arm64.tar.gz /
 RUN <<PANDOC

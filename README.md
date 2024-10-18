@@ -5,7 +5,7 @@ A (somewhat) minimal container for running the Carpentries' R based web framewor
 An example command, executed from the base directory of your lesson:
 
 ```
-docker run -p 4321:4321 -v $PWD:/siteroot/ ghcr.io/uomresearchit/sandpaper:latest
+docker run --rm --name sandpaper -p 4321:4321 -v $PWD:/siteroot/ ghcr.io/uomresearchit/sandpaper:latest
 ```
 
 Where:
