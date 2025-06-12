@@ -20,3 +20,12 @@ make sure you have all the necessary directories before running the container:
 ```
 mkdir -p instructors/{data,fig,files} learners/{data,fig,files} profiles/{data,fig,files}
 ```
+
+## Contributing
+
+If the sandpaper or varnish versions are out of date,
+replace the `sandpaper_xxx.tar.gz` and `varnish_xxx.tar.gz` files with the updated versions
+(which can be downloaded from the [Carpentries R universe](https://carpentries.r-universe.dev/builds))
+and update the `Dockerfile` versions accordingly.
+
+Commit the changes and create a pull request.
